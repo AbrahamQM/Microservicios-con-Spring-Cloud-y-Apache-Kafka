@@ -13,6 +13,8 @@ public class ProductCommandConsumer {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductCommandConsumer.class);
 
+    //se define que este método va a recibir los mensajes del topic
+    // en el application.properties.
     @Bean
     public Consumer<Command<?>> handleCommand() {
         return command ->

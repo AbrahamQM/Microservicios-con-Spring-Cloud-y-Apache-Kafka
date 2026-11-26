@@ -32,6 +32,7 @@ public class Product {
     @PrePersist
     protected void prePersist() {
         createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
     }
 
     @PreUpdate

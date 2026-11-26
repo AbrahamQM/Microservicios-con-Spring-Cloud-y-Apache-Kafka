@@ -22,8 +22,7 @@ public class ProductCommandConsumer {
 
     //se define que este método va a recibir los mensajes del topic
     // en el application.properties.
-    @Bean
-    public Consumer<Command<?>> handleCommand() {
+    @Bean public Consumer<Command<ProductDto>> handleCommand() {
         return command -> {
             String type = command.type() == null ? "" : command.type().toUpperCase();
             logger.info("Command received successfully:\n-Type: {} \n-Body: {}\n", type, command.body());
@@ -33,7 +32,7 @@ public class ProductCommandConsumer {
                         logger.warn("Create Product command received with null body");
                         return;
                     }
-                    ProductDto productDto = command.body() instanceof ProductDto ? (ProductDto) command.body() : null;
+                    ProductDto productDto = command.body();
                     logger.info("Create Product command received: name={} price={}",
                             productDto != null ? productDto.name() : "Unknown",
                             productDto != null ? productDto.price() : "Unknown");

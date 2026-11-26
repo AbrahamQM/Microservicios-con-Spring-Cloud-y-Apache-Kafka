@@ -1,6 +1,10 @@
 \--------------------------------------------------------------------------------------------
 
-\------------------PRUEBAS DE FLUJO KAFKA POR COMANDOS---------------------
+\------------------DESCARGA IMAGEN, CREACIÓN CONTENEDOR-----------------------
+
+\-------------CREACIÓN BBDD, PRUEBAS DE COMANDOS EN CONTENERDOR---------
+
+\------------LOGS, CREAR TABLA, INSERTAR DATOS DE PRUEBA Y MOSTRARLOS------
 
 \--------------------------------------------------------------------------------------------
 
@@ -12,13 +16,13 @@
 
 *--bootstrap-server localhost:9092 `*
 
-*--topic products.commands --from-beginning* 
+*--topic products.commands --from-beginning*
 
 
 
 
 
-\*\*Lanzamos petición  para simular el envío de un mensaje (ojo curl para evitar que de problemas, no puedo usar curl 
+\*\*Lanzamos petición  para simular el envío de un mensaje (ojo curl para evitar que de problemas, no puedo usar curl
 
 directamente ojo debo usar  Invoke-RestMethod  para evitar problemas de codificación con PS
 
@@ -30,7 +34,7 @@ $json = '{"name":"Teclado mecanico","price":25.38}'
 
 *-ContentType 'application/json; charset=utf-8' `*
 
-*-Body (\[System.Text.Encoding]::UTF8.GetBytes($json))*  
+*-Body (\[System.Text.Encoding]::UTF8.GetBytes($json))*
 
 
 
@@ -48,7 +52,7 @@ $json = '{"name":"Teclado mecanico","price":25.38}'
 
 *\[container-0-C-1] c.a.c.s.k.p.h.ProductCommandConsumer     : Command received successfully:*
 
-*-Type: create* 
+*-Type: create*
 
 *-Body: {name=Teclado mecánico, price=25.38}*
 
@@ -62,7 +66,7 @@ $json = '{"name":"Teclado mecanico","price":25.38}'
 
 
 
-Funciona igual si le hacemos un post con Postman poniendo la cabecera el ContentType 
+Funciona igual si le hacemos un post con Postman poniendo la cabecera el ContentType
 
 *url> http://localhost:8080/products*
 
